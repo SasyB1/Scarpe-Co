@@ -62,9 +62,26 @@ namespace Scarpe_Co.Controllers
                     }
                     product.Immagine = "/images/" + product.Id.ToString() + ".jpg";
                 }
-
-               
-
+                if (model.Immagine1 != null && model.Immagine1.Length > 0)
+                {
+                    string uploads = Path.Combine(_env.WebRootPath, "images");
+                    string filePath = Path.Combine(uploads, product.Id.ToString() + "_img1.jpg");
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Immagine1.CopyTo(fileStream);
+                    }
+                    product.Immagine1 = "/images/" + product.Id.ToString() + "_img1.jpg";
+                }
+                if (model.Immagine2 != null && model.Immagine2.Length > 0)
+                {
+                    string uploads = Path.Combine(_env.WebRootPath, "images");
+                    string filePath = Path.Combine(uploads, product.Id.ToString() + "_img2.jpg");
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Immagine2.CopyTo(fileStream);
+                    }
+                    product.Immagine2 = "/images/" + product.Id.ToString() + "_img2.jpg";
+                }
                 _productService.Add(product);
                 return RedirectToAction("Index");
             }
@@ -111,6 +128,26 @@ namespace Scarpe_Co.Controllers
                         model.Immagine.CopyTo(fileStream);
                     }
                     product.Immagine = "/images/" + product.Id.ToString() + ".jpg";
+                }
+                if (model.Immagine1 != null && model.Immagine1.Length > 0)
+                {
+                    string uploads = Path.Combine(_env.WebRootPath, "images");
+                    string filePath = Path.Combine(uploads, product.Id.ToString() + "_img1.jpg");
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Immagine1.CopyTo(fileStream);
+                    }
+                    product.Immagine1 = "/images/" + product.Id.ToString() + "_img1.jpg";
+                }
+                if (model.Immagine2 != null && model.Immagine2.Length > 0)
+                {
+                    string uploads = Path.Combine(_env.WebRootPath, "images");
+                    string filePath = Path.Combine(uploads, product.Id.ToString() + "_img2.jpg");
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Immagine2.CopyTo(fileStream);
+                    }
+                    product.Immagine2 = "/images/" + product.Id.ToString() + "_img2.jpg";
                 }
                 _productService.Update(product);
                 return RedirectToAction("Index");
