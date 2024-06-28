@@ -1,0 +1,18 @@
+﻿@using Scarpe_Co.Entities;
+@model Prodotto
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h2>@Model.Nome</h2>
+<p>Price: @Model.Prezzo.ToString("C")</p>
+<p>@Model.Descrizione</p>
+<img src="@Model.Immagine" alt="@Model.Nome" style="width:400px;height:400px;" />
+<img src="@Model.Immagine1" alt="Additional Image 1" style="width:200px;height:200px;" />
+<img src="@Model.Immagine2" alt="Additional Image 2" style="width:200px;height:200px;" />
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?');">
+    <button type="submit" class="btn btn-danger">Elimina</button>
+</form>

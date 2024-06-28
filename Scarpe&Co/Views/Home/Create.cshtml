@@ -1,0 +1,33 @@
+﻿@using Scarpe_Co.Models;
+@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<h2>Create Product</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" class="form-control" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Prezzo"></label>
+        <input asp-for="Prezzo" class="form-control" />
+        <span asp-validation-for="Prezzo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Descrizione"></label>
+        <textarea asp-for="Descrizione" class="form-control"></textarea>
+        <span asp-validation-for="Descrizione" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Immagine"></label>
+        <input asp-for="Immagine" type="file" class="form-control" />
+        <span asp-validation-for="Immagine" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Crea</button>
+    <a asp-action="Index" class="btn btn-secondary">Annulla</a>
+</form>

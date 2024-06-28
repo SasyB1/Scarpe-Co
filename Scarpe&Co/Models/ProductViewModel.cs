@@ -4,6 +4,8 @@ namespace Scarpe_Co.Models
 {
     public class ProductViewModel
     {
+        public int Id { get; set; }
+
         [Display(Name = "Nome"), Required]
         public string Nome { get; set; }
 

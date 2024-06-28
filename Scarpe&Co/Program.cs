@@ -1,7 +1,10 @@
+using Scarpe_Co.Services;
+using Scarpe_Co.Services.Interface;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IProductService, ProductService>();
 
 var app = builder.Build();
 
