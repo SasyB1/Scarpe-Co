@@ -4,14 +4,27 @@
     ViewData["Title"] = "Product List";
 }
 
-<h2>Product List</h2>
 
-@foreach (var product in Model)
-{
-    <div>
-        <img src="@product.Immagine" alt="@product.Nome" style="width:200px;height:200px;" />
-        <h3>@product.Nome</h3>
-        <p>Price: @product.Prezzo.ToString("C")</p>
-        <a asp-action="Details" asp-route-id="@product.Id">View Details</a>
-    </div>
-}
+
+
+<div class="row row-cols-3">
+    @foreach (var product in Model)
+    {
+        <div class="card p-0 ">
+            <div class="card-inner w-100 h-100 position-relative">
+                <div class="card-front m-0 position-absolute w-100 h-100 bg-light d-flex align-items-center justify-content-center " >
+                    <img src="@product.Immagine" alt="@product.Nome" class="img-cover w-100" />
+                </div>
+                <div class="card-back position-absolute w-100 h-100 bg-light text-dark d-flex flex-column align-items-start justify-content-center ps-3 ">
+                    <h3>@product.Nome</h3>
+                    <p>Prezzo: @product.Prezzo.ToString("C")</p>
+                    <a asp-action="Details" asp-route-id="@product.Id">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+

@@ -88,6 +88,13 @@ namespace Scarpe_Co.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            _productService.Delete(id);
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Privacy()
         {
             return View();

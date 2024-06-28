@@ -12,9 +12,9 @@ namespace Scarpe_Co.Services
                 Nome = "Salomon XT-6 LTR Cord Wren",
                 Descrizione = "Scarpe da ginnastica per uomo",
                 Prezzo = 114,
-                Immagine = "scarpe-ginnastica.jpg",
-                Immagine1 = "scarpe-ginnastica1.jpg",
-                Immagine2 = "scarpe-ginnastica2.jpg"
+                Immagine = "https://www.sotf.com/upload/articoli/thumbs/SWIMSHORT-TITANIUM-SOTF_70993_thumb.jpg",
+                Immagine1 = "https://www.sotf.com/upload/articoli/thumbs/SWIMSHORT-TITANIUM-SOTF_70993_thumb.jpg",
+                Immagine2 = "https://www.sotf.com/upload/articoli/thumbs/SWIMSHORT-TITANIUM-SOTF_70993_thumb.jpg"
             },
             new Prodotto
             {
