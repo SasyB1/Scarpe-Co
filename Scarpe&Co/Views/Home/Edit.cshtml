@@ -29,6 +29,16 @@
         <input asp-for="Immagine" type="file" class="form-control" />
         <span asp-validation-for="Immagine" class="text-danger"></span>
     </div>
+    <div class="form-group">
+        <label asp-for="Immagine1"></label>
+        <input asp-for="Immagine1" type="file" class="form-control" />
+        <span asp-validation-for="Immagine" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Immagine2"></label>
+        <input asp-for="Immagine2" type="file" class="form-control" />
+        <span asp-validation-for="Immagine" class="text-danger"></span>
+    </div>
 
     <button type="submit" class="btn btn-primary">Save Changes</button>
     <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">Cancel</a>
