@@ -1,0 +1,13 @@
+﻿namespace Scarpe_Co.Models
+{
+    public class ProductViewModel
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Descrizione { get; set; }
+        public decimal Prezzo { get; set; }
+        public string Immagine { get; set; }
+        public string Immagine1 { get; set; }
+        public string Immagine2 { get; set; }
+    }
+}
