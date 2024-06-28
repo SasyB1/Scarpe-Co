@@ -16,12 +16,12 @@ namespace Scarpe_Co.Models
         public decimal Prezzo { get; set; }
 
         [Display(Name = "Immagine "), Required]
-        public string Immagine { get; set; }
+        public IFormFile Immagine { get; set; }
 
         [Display(Name = "Immagine aggiuntiva "), Required]
-        public string Immagine1 { get; set; }
+        public IFormFile Immagine1 { get; set; }
 
         [Display(Name = "Immagine ulteriore"), Required]
-        public string Immagine2 { get; set; }
+        public IFormFile Immagine2 { get; set; }
     }
 }

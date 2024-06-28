@@ -10,11 +10,13 @@ namespace Scarpe_Co.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IProductService _productService;
+        private readonly IWebHostEnvironment _env;
 
-        public HomeController(ILogger<HomeController> logger, IProductService productService)
+        public HomeController(ILogger<HomeController> logger, IProductService productService, IWebHostEnvironment env)
         {
             _logger = logger;
             _productService = productService;
+            _env = env;
         }
 
         public IActionResult Index()
@@ -40,18 +42,34 @@ namespace Scarpe_Co.Controllers
         [HttpPost]
         public IActionResult Create(ProductViewModel model)
         {
-            _productService.Add(new Prodotto
+            if (ModelState.IsValid)
             {
-                Nome = model.Nome,
-                Descrizione = model.Descrizione,
-                Prezzo = model.Prezzo,
-                Immagine = model.Immagine,
-                Immagine1 = model.Immagine1,
-                Immagine2 = model.Immagine2
-            });
-            return RedirectToAction("Index");
-        }
+                var product = new Prodotto
+                {
+                    Nome = model.Nome,
+                    Descrizione = model.Descrizione,
+                    Prezzo = model.Prezzo
+                };
 
+               
+                if (model.Immagine != null && model.Immagine.Length > 0)
+                {
+                    string uploads = Path.Combine(_env.WebRootPath, "images");
+                    string filePath = Path.Combine(uploads, product.Id.ToString() + ".jpg");
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Immagine.CopyTo(fileStream);
+                    }
+                    product.Immagine = "/images/" + product.Id.ToString() + ".jpg";
+                }
+
+               
+
+                _productService.Add(product);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
         public IActionResult Edit(int id)
         {
             var product = _productService.GetProductById(id);
@@ -64,28 +82,40 @@ namespace Scarpe_Co.Controllers
                 Nome = product.Nome,
                 Descrizione = product.Descrizione,
                 Prezzo = product.Prezzo,
-                Immagine = product.Immagine,
-                Immagine1 = product.Immagine1,
-                Immagine2 = product.Immagine2
             });
         }
 
 
         [HttpPost]
-        public IActionResult Edit(ProductViewModel model) {
-            var product = _productService.GetProductById(model.Id);
-            if (product == null)
+        public IActionResult Edit(ProductViewModel model)
+        {
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                var product = _productService.GetProductById(model.Id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+
+                product.Nome = model.Nome;
+                product.Descrizione = model.Descrizione;
+                product.Prezzo = model.Prezzo;
+
+               
+                if (model.Immagine != null && model.Immagine.Length > 0)
+                {
+                    string uploads = Path.Combine(_env.WebRootPath, "images");
+                    string filePath = Path.Combine(uploads, product.Id.ToString() + ".jpg");
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Immagine.CopyTo(fileStream);
+                    }
+                    product.Immagine = "/images/" + product.Id.ToString() + ".jpg";
+                }
+                _productService.Update(product);
+                return RedirectToAction("Index");
             }
-            product.Nome = model.Nome;
-            product.Descrizione = model.Descrizione;
-            product.Prezzo = model.Prezzo;
-            product.Immagine = model.Immagine;
-            product.Immagine1 = model.Immagine1;
-            product.Immagine2 = model.Immagine2;
-            _productService.Update(product);
-            return RedirectToAction("Index");
+            return View(model);
         }
 
         [HttpPost]
