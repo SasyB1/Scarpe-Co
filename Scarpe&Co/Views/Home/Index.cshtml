@@ -4,16 +4,25 @@
     ViewData["Title"] = "Product List";
 }
 
+<div class="container-fluid ">
+    <div class="row ">
+        <div class="col-12 p-0"> <img  class="w-100" src="https://www.sotf.com/upload/comunicazioni_home/240607_1_CAROSELLO.jpg" /></div> 
+        <div class="col-12 text-center mt-2 ">
+            <a asp-action="Create"  class="btn btn-secondary">Vendi il tuo prodotto</a>
+        </div>
+    </div>
 
 
 
-<div class="row row-cols-3">
+
+
+<div class="row row-cols-1 row-cols-md-4 mt-2 d-flex justify-content-around">
     @foreach (var product in Model)
-    {
-        <div class="card p-0 ">
+    {<div class="col d-flex justify-content-center align-items-center"> 
+        <div class="card p-0 mt-2  ">
             <div class="card-inner w-100 h-100 position-relative">
                 <div class="card-front m-0 position-absolute w-100 h-100 bg-light d-flex align-items-center justify-content-center " >
-                    <img src="@product.Immagine" alt="@product.Nome" class="img-cover w-100" />
+                    <img src="@product.Immagine" alt="@product.Nome" class="img-cover w-100 img-fluid" />
                 </div>
                 <div class="card-back position-absolute w-100 h-100 bg-light text-dark d-flex flex-column align-items-start justify-content-center ps-3 ">
                     <h3>@product.Nome</h3>
@@ -22,9 +31,17 @@
                 </div>
             </div>
         </div>
+            </div>
     }
 </div>
 
+    <div class="row mt-3 ">
+        <div class="col-12 p-0"> <img class="w-100" src="./images/ciaonello.jpg" /></div>
+        
+          
+        </div>
+    </div>
+</div>
 
 
 

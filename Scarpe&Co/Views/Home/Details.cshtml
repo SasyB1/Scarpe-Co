@@ -3,16 +3,35 @@
 @{
     ViewData["Title"] = "Product Details";
 }
-
+<div class="container text-center">
+    <div class="row">
+        <div class="col mt-2">
 <h2>@Model.Nome</h2>
-<p>Price: @Model.Prezzo.ToString("C")</p>
-<p>@Model.Descrizione</p>
-<img src="@Model.Immagine" alt="@Model.Nome" style="width:400px;height:400px;" />
-<img src="@Model.Immagine1" alt="Additional Image 1" style="width:200px;height:200px;" />
-<img src="@Model.Immagine2" alt="Additional Image 2" style="width:200px;height:200px;" />
+        </div>
+    </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="col">
+                    <img class="img-fluid" src="@Model.Immagine" alt="@Model.Nome" style="width:400px;height:400px;" />
+                </div>
+        <div class="col">
+                    <img class="img-fluid" src="@Model.Immagine1" alt="Additional Image 1" style="width:200px;height:200px;" />
+                </div>
+        <div class="col">
+                    <img class="img-fluid" src="@Model.Immagine2" alt="Additional Image 2" style="width:200px;height:200px;" />
+                </div>
+            </div>
 
-<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<p class="fs-5">Price: @Model.Prezzo.ToString("C")</p>
+    <p class="fs-5">@Model.Descrizione</p>
 
+<div class="row">
+    <div class="col">
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary w-100">Edit</a>
+        </div>
+        <div class="col">
 <form asp-action="Delete" asp-route-id="@Model.Id" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?');">
-    <button type="submit" class="btn btn-danger">Elimina</button>
+    <button type="submit" class="btn btn-danger w-100">Elimina</button>
 </form>
+        </div>
+    </div>
+ 
