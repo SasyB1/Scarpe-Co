@@ -101,3 +101,17 @@ body {
 .content-wrap {
     flex: 1;
 }
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.slide-down {
+    animation: slideDown 0.8s ease-out forwards;
+}
