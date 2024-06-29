@@ -10,7 +10,6 @@
 </head>
 <body>
     <div class="content-wrap">
-        <!-- Inizio del content-wrap -->
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow bgdark ">
                 <div class="container-fluid">
@@ -37,12 +36,14 @@
                 @RenderBody()
             </main>
         </div>
-    </div> <!-- Fine del content-wrap -->
-    <footer class="border-top footer text-muted ">
-        <div class="container">
-            &copy; 2024 - LeTex - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    </div> 
+    <div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <span class="mb-3 mb-md-0 text-body-secondary">© 2024 LeTex, Inc</span>
+    </div>
+  </footer>
+</div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
